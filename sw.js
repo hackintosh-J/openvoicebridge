@@ -1,6 +1,9 @@
 
 // OpenVoiceBridge service worker
-const CACHE_NAME = 'ovb-cache-v1';
+// Bump the cache version whenever core assets change (e.g., updated library versions).
+// Changing CACHE_NAME ensures the service worker drops the old cache and fetches fresh
+// copies of files such as app.js, avoiding stale dependencies like older transformers versions.
+const CACHE_NAME = 'ovb-cache-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
