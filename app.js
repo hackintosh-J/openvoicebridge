@@ -50,7 +50,8 @@ function uiInit() {
   $('#stopMic').addEventListener('click', stopMic);
   $('#file').addEventListener('change', handleFile);
   $('#exportSRT').addEventListener('click', exportSRT);
-  $('#clear').addEventListener('click', clearAll);
+    const clearBtn = $("#clear");
+  if (clearBtn) clearBtn.addEventListener('click', clearAl);
   $('#about-year').textContent = new Date().getFullYear();
 }
 
