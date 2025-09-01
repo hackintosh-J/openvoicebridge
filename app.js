@@ -5,7 +5,9 @@ import { segmentsToSRT } from './srt.js';
 import { resampleTo16k, mmss } from './utils.js';
 
 // Transformers.js from CDN. We pin to a semver to reduce breakage; adjust as needed.
-const TRANSFORMERS_CDN = 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.14.2';
+// Use a newer version of the Transformers library to avoid runtime errors observed in older versions.
+// See: https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/package.json for version details.
+const TRANSFORMERS_CDN = 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
 
 let transcriber = null;
 let modelId = 'Xenova/whisper-tiny'; // default (multilingual), ~39MB
@@ -50,8 +52,7 @@ function uiInit() {
   $('#stopMic').addEventListener('click', stopMic);
   $('#file').addEventListener('change', handleFile);
   $('#exportSRT').addEventListener('click', exportSRT);
-    const clearBtn = $("#clear");
-  if (clearBtn) clearBtn.addEventListener('click', clearAl);
+  $('#clear').addEventListener('click', clearAll);
   $('#about-year').textContent = new Date().getFullYear();
 }
 
